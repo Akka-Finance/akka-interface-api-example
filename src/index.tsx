@@ -3,13 +3,38 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { WagmiConfig, configureChains, createConfig } from 'wagmi'
+import { publicProvider } from 'wagmi/providers/public'
+import { core } from './wagmi/chains/core';
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [core],
+  [publicProvider()],
+)
+const config = createConfig({
+  autoConnect: true,
+  connectors: [
+    new MetaMaskConnector({
+      chains,
+      options: {
+        UNSTABLE_shimOnConnectSelectAccount: true,
+      },
+    }),
+  ],
+  publicClient,
+  webSocketPublicClient,
+})
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <App />
+    <WagmiConfig config={config}>
+      <App />
+    </WagmiConfig>
   </React.StrictMode>
 );
 
