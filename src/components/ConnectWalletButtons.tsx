@@ -16,7 +16,7 @@ const ConnectWalletButtons = () => {
                     onClick={() => connect({ connector: x })}
                 >
                     {x.id === 'injected' ? (isMounted ? x.name : x.id) : x.name}
-                    {isMounted && !x.ready && ' (unsupported)'}
+                    {isMounted && !x.ready && ` (unsupported: Switch to ${x.name} chain)`}
                     {isLoading && x.id === pendingConnector?.id && '…'}
                 </Button>
             ))}

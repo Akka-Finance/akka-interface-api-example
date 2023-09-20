@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import ConnectWalletButtons from './ConnectWalletButtons'
 import { useAccount } from 'wagmi'
+import Healthcheck from './Healthcheck'
 
 const Header = () => {
     const { address, isConnected } = useAccount()
@@ -22,6 +23,9 @@ const Header = () => {
                     {isConnected &&
                         <Typography>{address}</Typography>
                     }
+                </Box>
+                <Box>
+                    <Healthcheck />
                 </Box>
                 <Box>
                     <ConnectWalletButtons />
