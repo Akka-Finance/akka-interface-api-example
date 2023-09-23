@@ -20,3 +20,10 @@ export interface RouteResponseType {
     fromToken?: TokenData;
     protocols?: Array<Array<Array<Protocol>>>;
 }
+
+export interface RouteResponseType {
+    toAmount: string;
+    toToken?: TokenData;
+    fromToken?: TokenData;
+    protocols?: Array<Array<Array<Protocol>>>;
+}

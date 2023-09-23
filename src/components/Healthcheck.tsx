@@ -15,7 +15,7 @@ const Healthcheck = () => {
             })
     }, [])
     return (
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5px", marginTop: "-3px" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5px" }}>
             <Typography variant='h6' sx={{fontSize: "16px"}}>API status: </Typography>
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "-2px" }}>{info?.status === "OK" ? "🟢" : "🔴"}</Box>
         </Box>

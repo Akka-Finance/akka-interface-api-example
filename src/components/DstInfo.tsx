@@ -3,7 +3,7 @@ import React from 'react'
 
 const DstInfo = () => {
     return (
-        <Box sx={{ width: "15%", padding: "10px", display: "flex", flexDirection: "column", gap: "10px" }}>
+        <Box sx={{ width: "150px", padding: "10px", display: "flex", flexDirection: "column", gap: "10px" }}>
             <Box sx={{ border: "1px solid rgb(225, 222, 242)", borderRadius: "5px", padding: "10px", display: "flex", alignItems: "center", gap: "10px" }}>
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     <Box

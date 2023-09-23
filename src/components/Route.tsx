@@ -5,13 +5,10 @@ import { RouteResponseType } from '../types/route'
 const Route = () => {
     const [Route, setRoute] = useState<RouteResponseType | null>(null)
     useEffect(() => {
-        fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/quote?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=1000000000000000000000&includeProtocols=true")
+        fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/quote?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&includeProtocols=true")
             .then((res) => res.json())
             .then((data) => {
                 setRoute(data)
-            })
-            .then(() => {
-                console.log(Route);
             })
     }, [])
 

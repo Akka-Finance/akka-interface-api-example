@@ -20,12 +20,12 @@ const Header = () => {
             </Box>
             <Box sx={{ width: "70%", display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "10px" }}>
                 <Box>
+                    <Healthcheck />
+                </Box>
+                <Box>
                     {isConnected &&
                         <Typography>{address}</Typography>
                     }
-                </Box>
-                <Box>
-                    <Healthcheck />
                 </Box>
                 <Box>
                     <ConnectWalletButtons />

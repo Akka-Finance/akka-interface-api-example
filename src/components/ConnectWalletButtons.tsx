@@ -13,7 +13,7 @@ const ConnectWalletButtons = () => {
                     disabled={!x.ready || isReconnecting || connector?.id === x.id}
                     type='button'
                     key={x.name}
-                    onClick={() => connect({ connector: x })}
+                    onClick={() => connect({ connector: x, chainId: 1116 })}
                 >
                     {x.id === 'injected' ? (isMounted ? x.name : x.id) : x.name}
                     {isMounted && !x.ready && ` (unsupported: Switch to ${x.name} chain)`}
