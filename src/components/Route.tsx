@@ -2,18 +2,11 @@ import { Box, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { RouteResponseType } from '../types/route'
 
-const Route = () => {
-    const [Route, setRoute] = useState<RouteResponseType | null>(null)
-    useEffect(() => {
-        fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/quote?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&includeProtocols=true")
-            .then((res) => res.json())
-            .then((data) => {
-                setRoute(data)
-            })
-    }, [])
+interface RouteProps {
+    Route: RouteResponseType | null
+}
 
-
-
+const Route = ({ Route }: RouteProps) => {
     return (
         <Box sx={{ width: "70%", border: "1px solid rgb(225, 222, 242)", borderRadius: "5px", display: "flex", flexDirection: "column" }}>
             <Box sx={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", paddingY: "10px" }}>

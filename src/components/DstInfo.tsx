@@ -1,7 +1,12 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
+import { RouteResponseType } from '../types/route'
+import { BigNumber, ethers } from 'ethers'
 
-const DstInfo = () => {
+interface DstInfoProps {
+    Route: RouteResponseType | null
+}
+const DstInfo = ({ Route }: DstInfoProps) => {
     return (
         <Box sx={{ width: "150px", padding: "10px", display: "flex", flexDirection: "column", gap: "10px" }}>
             <Box sx={{ border: "1px solid rgb(225, 222, 242)", borderRadius: "5px", padding: "10px", display: "flex", alignItems: "center", gap: "10px" }}>
@@ -31,6 +36,11 @@ const DstInfo = () => {
                     />
                 </Box>
                 <Box>COREINU</Box>
+            </Box>
+            <Box sx={{ border: "1px solid rgb(225, 222, 242)", borderRadius: "5px", padding: "10px", display: "flex", alignItems: "center", gap: "10px" }}>
+                <Box>
+                    <Typography variant='caption' sx={{ fontSize: "16px" }}>Return Amount: {Route && (+ethers.utils.formatUnits(BigNumber.from(Route.toAmount), Route.toToken?.decimals)).toFixed(4)}</Typography>
+                </Box>
             </Box>
         </Box>
     )
