@@ -7,6 +7,7 @@ import DstInfo from './DstInfo'
 import { useAccount, useSendTransaction } from 'wagmi'
 import { BigNumber, ethers } from 'ethers';
 import { RouteResponseType } from '../types/route';
+import { toast } from 'react-toastify';
 
 interface RouteProps {
     Route: RouteResponseType | null
@@ -20,7 +21,7 @@ const Swap = ({ Route }: RouteProps) => {
         if (isConnected) {
             setLoading(true)
             try {
-                const res = await fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/swap?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&from=0x9d1af7EC1DC4486768E6c9e113fA412bA70DF7Cd&slippage=0.05&includeTokensInfo=true&includeProtocols=true")
+                const res = await fetch("https://router.akka.finance/v2/1116/swap?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&from=0x9d1af7EC1DC4486768E6c9e113fA412bA70DF7Cd&slippage=0.05&includeTokensInfo=true&includeProtocols=true")
                 const data: SwapResponseType = await res.json()
                 const transaction = await sendTransactionAsync({
                     to: data.tx.to,
@@ -29,8 +30,13 @@ const Swap = ({ Route }: RouteProps) => {
                     gasPrice: BigInt(data.tx.gasPrice),
                     gas: BigInt(data.tx.gas),
                 })
-            } catch (error) {
-                console.log(error);
+            } catch (error: any) {
+                if (error.shortMessage) {
+                    toast(error.shortMessage)
+                }
+                else {
+                    toast(error.message)
+                }
             }
             setLoading(false)
         }
@@ -39,7 +45,7 @@ const Swap = ({ Route }: RouteProps) => {
         if (isConnected) {
             setLoading(true)
             try {
-                const res = await fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/swap?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&from=0x9d1af7EC1DC4486768E6c9e113fA412bA70DF7Cd&slippage=0.05&includeTokensInfo=true&includeProtocols=true")
+                const res = await fetch("https://router.akka.finance/v2/1116/swap?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&from=0x9d1af7EC1DC4486768E6c9e113fA412bA70DF7Cd&slippage=0.05&includeTokensInfo=true&includeProtocols=true")
                 const data: SwapResponseType = await res.json()
                 const transaction = await sendTransactionAsync({
                     to: data.tx.to,

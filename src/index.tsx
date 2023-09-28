@@ -7,6 +7,8 @@ import { WagmiConfig, configureChains, createConfig } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { core } from './wagmi/chains/core';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [core],
@@ -33,6 +35,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <WagmiConfig config={config}>
+      <ToastContainer
+        position={"top-center"}
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick={true}
+        pauseOnHover={true}
+        draggable={true}
+        theme="light" />
       <App />
     </WagmiConfig>
   </React.StrictMode>

@@ -10,7 +10,7 @@ import Swap from './Swap'
 const Qoute = () => {
     const [RouteData, setRouteData] = useState<RouteResponseType | null>(null)
     useEffect(() => {
-        fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/quote?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&includeProtocols=true")
+        fetch("https://router.akka.finance/v2/1116/quote?src=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&dst=0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC&amount=10000000000000000&includeProtocols=true")
             .then((res) => res.json())
             .then((data) => {
                 setRouteData(data)
@@ -19,7 +19,7 @@ const Qoute = () => {
 
     const [Tokens, setTokens] = useState<TokensResponseType | null>(null)
     useEffect(() => {
-        fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/tokens")
+        fetch("https://router.akka.finance/v2/1116/tokens")
             .then((res) => res.json())
             .then((data) => {
                 setTokens(data)

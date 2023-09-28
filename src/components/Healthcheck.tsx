@@ -8,7 +8,7 @@ interface HealthcheckResponseType {
 const Healthcheck = () => {
     const [info, setInfo] = useState<HealthcheckResponseType | null>(null)
     useEffect(() => {
-        fetch("https://seal-app-vln3e.ondigitalocean.app/v2/1116/healthcheck")
+        fetch("https://router.akka.finance/v2/1116/healthcheck")
             .then((res) => res.json())
             .then((data) => {
                 setInfo(data)

@@ -10,8 +10,8 @@ export const core = {
         symbol: 'CORE',
     },
     rpcUrls: {
-        public: { http: ['https://rpc-core.icecreamswap.com	'] },
-        default: { http: ['https://rpc-core.icecreamswap.com	'] },
+        public: { http: ['https://rpc-core.icecreamswap.com'] },
+        default: { http: ['https://rpc-core.icecreamswap.com'] },
     },
     blockExplorers: {
         etherscan: { name: 'CoreExplorer', url: 'https://scan.coredao.org' },
