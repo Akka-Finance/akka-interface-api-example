@@ -71,7 +71,7 @@ const Navbar = () => {
             ))}
 
             <Link
-              href="https://github.com/Akka-Finance/akka-interface-sdk-example"
+              href="https://github.com/Akka-Finance/akka-interface-api-example"
               color="#000000"
               sx={{ ml: 2 }}
             >
