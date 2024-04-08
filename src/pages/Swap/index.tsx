@@ -22,7 +22,7 @@ const Swap = () => {
   const handleGetSwap = () => {
     setLoading(true);
     fetch(
-      `https://router.akka.finance/v2/5000/1inch-swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${0.05}`
+      `https://router.akka.finance/v2/5000/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${0.05}`
     )
       .then((res) => res.json())
       .then((res) => {

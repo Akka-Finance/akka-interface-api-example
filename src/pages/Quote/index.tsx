@@ -28,7 +28,7 @@ const Swap = () => {
     setRouteData(null);
 
     fetch(
-      `https://router.akka.finance/v2/5000/1inch-quote?src=${fromTokenAddress}&dst=${toTokenAddress}&amount=${amount}&includeProtocols=true&includeTokensInfo=true`
+      `https://router.akka.finance/v2/5000/quote?src=${fromTokenAddress}&dst=${toTokenAddress}&amount=${amount}&includeProtocols=true&includeTokensInfo=true`
     )
       .then((res) => res.json())
       .then((res) => {
