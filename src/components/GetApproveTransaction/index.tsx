@@ -38,9 +38,17 @@ const GetApproveTransaction = () => {
     fetch(
       `https://router.akka.finance/v2/5000/approve/transaction?tokenAddress=${tokenAddress}&amount=${amount}`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error();
+      })
       .then((res) => {
         setData(res);
+      })
+      .catch(() => {
+        toast(
+          "Something went wrong when fetching transaction data, please try again!"
+        );
       })
       .finally(() => {
         setLoadingApproveTransactionData(false);
@@ -178,6 +186,7 @@ const GetApproveTransaction = () => {
                 variant="contained"
                 color="success"
                 onClick={approveTransaction}
+                disabled={!data?.data}
               >
                 approve this transaction
               </Button>

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import {
   Autocomplete,
-  Button,
   CircularProgress,
   TextField,
   Typography,
 } from "@mui/material";
 import MyBox from "../MyBox";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount } from "wagmi";
 import ConnectWallet from "../ConnectWallet";
 import { isAddress } from "viem";
 import { Token } from "../../types/tokens";
+import { toast } from "react-toastify";
 
 const GetAllowance = () => {
   const [loading, setLoading] = useState(false);
@@ -20,8 +20,7 @@ const GetAllowance = () => {
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [allowance, setAllowance] = useState<string>("");
 
-  const { address, isConnected } = useAccount();
-  const { disconnect } = useDisconnect();
+  const { address } = useAccount();
 
   useEffect(() => {
     if (address) {
@@ -34,11 +33,19 @@ const GetAllowance = () => {
 
     setLoadingAllowance(true);
     fetch(
-      `https://router.akka.finance/v2/5000/allowance?tokenAddress=${tokenAddress}&walletAddress=${walletAddress}`
+      `https://router.akka.finance/v2/5000/approve/allowance?tokenAddress=${tokenAddress}&walletAddress=${walletAddress}`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error();
+      })
       .then(({ allowance }: { allowance: string }) => {
         setAllowance(allowance?.toString() || "");
+      })
+      .catch(() => {
+        toast(
+          "Something went wrong when fetching allowance data, please try again!"
+        );
       })
       .finally(() => {
         setLoadingAllowance(false);
@@ -134,18 +141,6 @@ const GetAllowance = () => {
         />
         <h3>OR</h3>
         <ConnectWallet />
-
-        {isConnected && (
-          <Button
-            onClick={() => {
-              setWalletAddress("");
-              disconnect();
-            }}
-            color="warning"
-          >
-            Disconnect
-          </Button>
-        )}
       </MyBox>
 
       <MyBox sx={{ wordBreak: "break-word" }}>

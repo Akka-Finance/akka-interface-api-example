@@ -11,8 +11,8 @@ const Swap = () => {
   const [loading, setLoading] = useState(false);
   const [swapData, setSwapData] = useState<OnChainSwapResponse | null>(null);
   const [tokens, setTokens] = useState<TokensResponse | null>(null);
-  const [src, setSrc] = useState("0x0000000000000000000000000000000000000000");
-  const [dst, setDst] = useState("0x6E35fF7aC8eEB825DdB155515eF612ADcD66BCbC");
+  const [src, setSrc] = useState("0x78c1b0C915c4FAA5FffA6CAbf0219DA63d7f4cb8");
+  const [dst, setDst] = useState("0x201EBa5CC46D216Ce6DC03F6a759e8E766e956aE");
   const [amount, setAmount] = useState("10000000000000000");
   const [from, setFrom] = useState("");
 
@@ -24,13 +24,19 @@ const Swap = () => {
     fetch(
       `https://router.akka.finance/v2/5000/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${0.05}`
     )
-      .then((res) => res.json())
+      .then(async (res) => {
+        if (res.ok) return res.json();
+        await res.json().then((res) => {
+          throw new Error(
+            res.description || res.message || "Something went wrong!"
+          );
+        });
+      })
       .then((res) => {
         setSwapData(res);
       })
-      .catch(async (err) => {
-        const message = (await err.response.json()).description;
-        toast(message);
+      .catch((err) => {
+        toast(err.message);
       })
       .finally(() => {
         setLoading(false);

@@ -20,7 +20,7 @@ const Swap = () => {
   const [toTokenAddress, setToTokenAddress] = useState(
     "0x201EBa5CC46D216Ce6DC03F6a759e8E766e956aE"
   );
-  const [amount, setAmount] = useState<string>("10000000000000000");
+  const [amount, setAmount] = useState<string>("1000000000000000000");
 
   useEffect(() => {
     if (!fromTokenAddress || !toTokenAddress || !amount) return;
@@ -30,7 +30,13 @@ const Swap = () => {
     fetch(
       `https://router.akka.finance/v2/5000/quote?src=${fromTokenAddress}&dst=${toTokenAddress}&amount=${amount}&includeProtocols=true&includeTokensInfo=true`
     )
-      .then((res) => res.json())
+      .then(async (res) => {
+        if (res.ok) return res.json();
+        await res.json().then((res) => {
+          setRouteData({ toAmount: "0" });
+          throw new Error(res.description || "Something went wrong!");
+        });
+      })
       .then((res) => {
         setRouteData(res);
       })
