@@ -33,7 +33,7 @@ const GetAllowance = () => {
 
     setLoadingAllowance(true);
     fetch(
-      `https://router.akka.finance/v2/5000/approve/allowance?tokenAddress=${tokenAddress}&walletAddress=${walletAddress}`
+      `https://routerv2.akka.finance/v2/1116/approve/allowance?tokenAddress=${tokenAddress}&walletAddress=${walletAddress}`
     )
       .then((res) => {
         if (res.ok) return res.json();
@@ -99,7 +99,7 @@ const GetAllowance = () => {
         onOpen={() => {
           if (!tokens.length) {
             setLoading(true);
-            fetch(`https://router.akka.finance/v2/5000/tokens`)
+            fetch(`https://routerv2.akka.finance/v2/1116/tokens`)
               .then((res) => res.json())
               .then(
                 ({

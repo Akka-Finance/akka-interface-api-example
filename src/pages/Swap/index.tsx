@@ -22,7 +22,7 @@ const Swap = () => {
   const handleGetSwap = () => {
     setLoading(true);
     fetch(
-      `https://router.akka.finance/v2/5000/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${0.05}`
+      `https://routerv2.akka.finance/v2/1116/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${0.05}`
     )
       .then(async (res) => {
         if (res.ok) return res.json();
@@ -71,7 +71,7 @@ const Swap = () => {
   }, [address]);
 
   useEffect(() => {
-    fetch(`https://router.akka.finance/v2/5000/tokens`)
+    fetch(`https://routerv2.akka.finance/v2/1116/tokens`)
       .then((res) => res.json())
       .then(
         ({

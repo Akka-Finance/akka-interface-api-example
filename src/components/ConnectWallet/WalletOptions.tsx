@@ -9,7 +9,7 @@ const WalletOptions = () => {
     <WalletOption
       key={connector.uid}
       connector={connector}
-      onClick={() => connect({ connector, chainId: 5000 })}
+      onClick={() => connect({ connector, chainId: 1116 })}
     />
   ));
 };

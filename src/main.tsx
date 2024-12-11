@@ -6,7 +6,7 @@ import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
 import { WagmiProvider, createConfig, http } from "wagmi";
 import { ToastContainer } from "react-toastify";
-import { mantle } from "wagmi/chains";
+import { coreDao } from "wagmi/chains";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -14,9 +14,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 const config = createConfig({
-  chains: [mantle],
+  chains: [coreDao],
   transports: {
-    [mantle.id]: http(),
+    [coreDao.id]: http(),
   },
 });
 

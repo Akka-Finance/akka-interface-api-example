@@ -39,13 +39,13 @@ const TokenList = ({ tokens }: TokenListProps) => {
             style={{ width: 40, height: 40 }}
             src={
               token.logoURI ||
-              "https://cdn.akka.finance/images/mantle/0x0000000000000000000000000000000000000000.png"
+              "https://cdn.akka.finance/images/core/0x0000000000000000000000000000000000000000.png"
             }
             alt={token.symbol}
             onError={({ currentTarget }) => {
               currentTarget.onerror = null;
               currentTarget.src =
-                "https://cdn.akka.finance/images/mantle/0x0000000000000000000000000000000000000000.png";
+                "https://cdn.akka.finance/images/core/0x0000000000000000000000000000000000000000.png";
             }}
           />
 

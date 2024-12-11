@@ -28,7 +28,7 @@ const Swap = () => {
     setRouteData(null);
 
     fetch(
-      `https://router.akka.finance/v2/5000/quote?src=${fromTokenAddress}&dst=${toTokenAddress}&amount=${amount}&includeProtocols=true&includeTokensInfo=true`
+      `https://routerv2.akka.finance/v2/1116/quote?src=${fromTokenAddress}&dst=${toTokenAddress}&amount=${amount}&includeProtocols=true&includeTokensInfo=true`
     )
       .then(async (res) => {
         if (res.ok) return res.json();
@@ -46,7 +46,7 @@ const Swap = () => {
   }, [fromTokenAddress, toTokenAddress, amount]);
 
   useEffect(() => {
-    fetch(`https://router.akka.finance/v2/5000/tokens`)
+    fetch(`https://routerv2.akka.finance/v2/1116/tokens`)
       .then((res) => res.json())
       .then(
         ({

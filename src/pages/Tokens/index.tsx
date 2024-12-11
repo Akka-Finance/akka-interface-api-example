@@ -10,7 +10,7 @@ const Tokens = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`https://router.akka.finance/v2/5000/tokens`)
+    fetch(`https://routerv2.akka.finance/v2/1116/tokens`)
       .then((res) => res.json())
       .then(
         ({

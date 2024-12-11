@@ -12,7 +12,7 @@ const Spender = () => {
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch("https://router.akka.finance/v2/5000/approve/spender")
+    fetch("https://routerv2.akka.finance/v2/1116/approve/spender")
       .then((res) => res.json())
       .then(({ address }: { address: string }) => {
         setSpenderAddress(address);
@@ -45,7 +45,7 @@ const Spender = () => {
         ) : (
           <MyBox sx={{ display: "flex", flexDirection: "column" }}>
             <MyBox sx={{ wordBreak: "break-word" }}>
-              akka contract address for Mantle chain: {spenderAddress}
+              akka contract address for Core chain: {spenderAddress}
             </MyBox>
             <GetAllowance />
             <GetApproveTransaction />
